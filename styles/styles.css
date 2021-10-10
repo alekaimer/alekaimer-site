@@ -12,7 +12,7 @@ img {
   max-width: 100%;
 }
 p {
-  margin-bottom: 28px;
+  margin-bottom: 18px;
 }
 p:last-child {
   margin-bottom: unset;
@@ -78,6 +78,8 @@ ul{
   overflow: hidden;
   display: flex;
   width: 190px;
+  min-height: 190px;
+  min-width: 190px;
 }
 
 .mainTitle {
@@ -95,7 +97,7 @@ ul{
 }
 
 /* comportamento de visualização */
-@media (max-height: 728px) {
+@media (max-height: 528px) {
   .infos {
     flex-direction: row;
     flex: 5;
