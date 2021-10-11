@@ -35,10 +35,10 @@ Aprecio o lado artístico de ambas as áreas e isso sempre me incentiva a aprend
           <div className='socialLinks'>
             <ul>
               <li>
-                <a href='#'>LinkedIn</a>
+                <a href='https://www.linkedin.com/in/alekaimer/' target='_blank'>LinkedIn</a>
               </li>
               <li>
-                <a href='#'>Instagram</a>
+                <a href='https://www.instagram.com/alekaimer/' target='_blank'>Instagram</a>
               </li>
             </ul>
           </div>
