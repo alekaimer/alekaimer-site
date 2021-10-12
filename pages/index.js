@@ -1,6 +1,13 @@
+import Head from 'next/head'
+
 function Home() {
   return (
     <>
+      <Head>
+        <title>Ale Kaimer Homepage</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="icon" type="image/png" href="https://github.com/alekaimer.png"/>
+      </Head>
       <div className='homeWrapper'>
 
         <div className='ilustration'>
