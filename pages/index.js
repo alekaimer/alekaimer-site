@@ -28,7 +28,7 @@ function Home() {
               Pode me chamar de Alê.🙂
             </p>
             <p>
-              Sou desenvolvedor front-end com foco em plataformas de e-commerce. Também atuo como músico e produtor musical nas horas vagas. ♬♪.
+              Sou desenvolvedor front-end com foco em plataformas de e-commerce. Também atuo como músico e produtor musical sempre que posso. ♬♪.
             </p>
             <p>
               Acredito que em qualquer atuação sempre buscamos ir além da técnica. <br />
