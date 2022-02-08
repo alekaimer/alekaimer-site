@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
+import ReactMarkdown from "react-markdown";
 
 function Home() {
   const [data, setData] = useState([]);
@@ -11,7 +12,6 @@ function Home() {
       const result = await conect();
       const data = await result.json();
       setData(data);
-      console.log(data?.data?.attributes);
     } catch (error) {
       console.log(error);
     }
@@ -47,7 +47,7 @@ function Home() {
           <h1 className="mainTitle">{data?.data?.attributes?.title}</h1>
 
           <div className="description">
-            {data?.data?.attributes?.description}
+            <ReactMarkdown>{data?.data?.attributes?.description}</ReactMarkdown>
           </div>
 
           <div className="socialLinks">
