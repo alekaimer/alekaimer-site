@@ -1,60 +1,74 @@
-import Head from 'next/head'
+import Head from "next/head";
+import { useEffect, useState } from "react";
 
 function Home() {
+  const [data, setData] = useState([]);
+
+  const getData = async ({ url }) => {
+    const conect = () => fetch(url);
+
+    try {
+      const result = await conect();
+      const data = await result.json();
+      setData(data);
+      console.log(data?.data?.attributes);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getData({
+      url: "https://alekaimer-api.herokuapp.com/api/home/?populate=Image,socialLinks",
+    });
+  }, []);
+
   return (
     <>
       <Head>
-        <title>Ale Kaimer Homepage</title>
+        <title>{data?.data?.attributes?.title}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <link rel="icon" type="image/png" href="https://github.com/alekaimer.png"/>
+        <link
+          rel="icon"
+          type="image/png"
+          href="https://github.com/alekaimer.png"
+        />
       </Head>
-      <div className='homeWrapper'>
-
-        <div className='ilustration'>
-          <img src='./images/leaf.jpeg' />
+      <div className="homeWrapper">
+        <div className="ilustration">
+          <img src="./images/leaf.jpeg" />
         </div>
 
-        <div className='infos'>
-  
-          <div className='avatar'>
-            <img src='https://github.com/alekaimer.png' />
+        <div className="infos">
+          <div className="avatar">
+            <img src="https://github.com/alekaimer.png" />
           </div>
 
-          <h1 className='mainTitle'>Alexandre Kaimer</h1>
+          <h1 className="mainTitle">{data?.data?.attributes?.title}</h1>
 
-          <div className='description'>
-            <p>
-              Oi, tudo bem? <br />
-              Pode me chamar de Alê.🙂
-            </p>
-            <p>
-              Sou desenvolvedor front-end com foco em plataformas de e-commerce. Também atuo como músico e produtor musical sempre que posso. ♬♪.
-            </p>
-            <p>
-              Acredito que em qualquer atuação sempre buscamos ir além da técnica. <br />
-Aprecio o lado artístico de ambas as áreas e isso sempre me incentiva a aprender, buscando a cada passo mais aprendizado, conhecimento e suas diversas aplicações.
-            </p>
-            <p>
-              Seja bem-vinde!
-            </p>
+          <div className="description">
+            {data?.data?.attributes?.description}
           </div>
 
-          <div className='socialLinks'>
+          <div className="socialLinks">
             <ul>
-              <li>
-                <a href='https://www.linkedin.com/in/alekaimer/' target='_blank'>LinkedIn</a>
-              </li>
-              <li>
-                <a href='https://www.instagram.com/alekaimer/' target='_blank'>Instagram</a>
-              </li>
+              {data?.data?.attributes?.socialLinks?.map((socialLink, index) => (
+                <li key={index}>
+                  <a
+                    href={socialLink.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {socialLink.social}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
-
         </div>
-
       </div>
     </>
-  )
+  );
 }
 
-export default Home
+export default Home;
