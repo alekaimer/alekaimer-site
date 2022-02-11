@@ -21,6 +21,7 @@ function Home() {
     getData({
       url: "https://alekaimer-api.herokuapp.com/api/home/?populate=Image,socialLinks",
     });
+    console.log(data);
   }, []);
 
   return (
@@ -41,7 +42,7 @@ function Home() {
 
         <div className="infos">
           <div className="avatar">
-            <img src="https://github.com/alekaimer.png" />
+            <img src={data?.data?.attributes?.Image?.data?.attributes?.url} />
           </div>
 
           <h1 className="mainTitle">{data?.data?.attributes?.title}</h1>
