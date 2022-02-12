@@ -2,27 +2,27 @@ import Head from "next/head";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 
-function Home() {
-  const [data, setData] = useState([]);
+function Home({ data }) {
+  // const [data, setData] = useState([]);
 
-  const getData = async ({ url }) => {
-    const conect = () => fetch(url);
+  // const getData = async ({ url }) => {
+  //   const conect = () => fetch(url);
 
-    try {
-      const result = await conect();
-      const data = await result.json();
-      setData(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  //   try {
+  //     const result = await conect();
+  //     const data = await result.json();
+  //     setData(data);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    getData({
-      url: "https://alekaimer-api.herokuapp.com/api/home/?populate=Image,socialLinks",
-    });
-    console.log(data);
-  }, []);
+  // useEffect(() => {
+  //   getData({
+  //     url: "https://alekaimer-api.herokuapp.com/api/home/?populate=Image,socialLinks",
+  //   });
+  //   console.log(data);
+  // }, []);
 
   return (
     <>
@@ -73,3 +73,15 @@ function Home() {
 }
 
 export default Home;
+
+export async function getStaticProps() {
+
+  const result = await fetch("https://alekaimer-api.herokuapp.com/api/home/?populate=Image,socialLinks");
+  const data = await result.json();
+
+  return {
+    props: {
+      data: data,
+    }, // will be passed to the page component as props
+  };
+}
